@@ -1,0 +1,4 @@
+#Mon May 15 12:57:09 CST 2017
+base.0=C\:\\Projects\\CircleMenu\\sample_zhy_CircleMenu\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
+renamed.0=classes.dex
+file.0=C\:\\Projects\\CircleMenu\\sample_zhy_CircleMenu\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main\\classes.dex

@@ -1,0 +1,201 @@
+[
+    {
+        "outputFile": "C:\\Projects\\CircleMenu\\sample_zhy_CircleMenu\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 57,
+                    "endOffset": 108
+                },
+                "from": {
+                    "file": "C:\\Projects\\CircleMenu\\sample_zhy_CircleMenu\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 92,
+                        "endColumn": 57,
+                        "endOffset": 145
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 113,
+                    "endColumn": 55,
+                    "endOffset": 164
+                },
+                "from": {
+                    "file": "C:\\Projects\\CircleMenu\\sample_zhy_CircleMenu\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 151,
+                        "endColumn": 55,
+                        "endOffset": 202
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 169,
+                    "endColumn": 55,
+                    "endOffset": 220
+                },
+                "from": {
+                    "file": "C:\\Projects\\CircleMenu\\library_zhy_CircleMenu\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 169,
+                        "endColumn": 55,
+                        "endOffset": 220
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 225,
+                    "endColumn": 54,
+                    "endOffset": 275
+                },
+                "from": {
+                    "file": "C:\\Projects\\CircleMenu\\library_zhy_CircleMenu\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 225,
+                        "endColumn": 54,
+                        "endOffset": 275
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 280,
+                    "endColumn": 53,
+                    "endOffset": 329
+                },
+                "from": {
+                    "file": "C:\\Projects\\CircleMenu\\library_zhy_CircleMenu\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 280,
+                        "endColumn": 53,
+                        "endOffset": 329
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 334,
+                    "endColumn": 48,
+                    "endOffset": 378
+                },
+                "from": {
+                    "file": "C:\\Projects\\CircleMenu\\sample_zhy_CircleMenu\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 104,
+                        "endColumn": 48,
+                        "endOffset": 148
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 383,
+                    "endColumn": 43,
+                    "endOffset": 422
+                },
+                "from": {
+                    "file": "C:\\Projects\\CircleMenu\\sample_zhy_CircleMenu\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 59,
+                        "endColumn": 43,
+                        "endOffset": 98
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 427,
+                    "endColumn": 52,
+                    "endOffset": 475
+                },
+                "from": {
+                    "file": "C:\\Projects\\CircleMenu\\sample_zhy_CircleMenu\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 154,
+                        "endColumn": 52,
+                        "endOffset": 202
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 480,
+                    "endLine": 16,
+                    "endColumn": 12,
+                    "endOffset": 766
+                },
+                "from": {
+                    "file": "C:\\Projects\\CircleMenu\\sample_zhy_CircleMenu\\src\\main\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 192,
+                        "endLine": 12,
+                        "endColumn": 12,
+                        "endOffset": 484
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 17,
+                    "startColumn": 4,
+                    "startOffset": 771,
+                    "endLine": 19,
+                    "endColumn": 12,
+                    "endOffset": 926
+                },
+                "from": {
+                    "file": "C:\\Projects\\CircleMenu\\sample_zhy_CircleMenu\\src\\main\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 525,
+                        "endLine": 17,
+                        "endColumn": 12,
+                        "endOffset": 682
+                    }
+                }
+            }
+        ]
+    }
+]
