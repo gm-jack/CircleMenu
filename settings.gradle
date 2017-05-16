@@ -1,3 +1,4 @@
-include ':app'
+include ':CircularMenu', ':circularmenu', ':app', ':circlemenu_three'
 include ':library_zhy_CircleMenu'
 include ':sample_zhy_CircleMenu'
+include ':wheelmenusample'

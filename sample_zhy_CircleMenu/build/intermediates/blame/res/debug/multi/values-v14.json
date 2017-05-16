@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "C:\\Projects\\CircleMenu\\sample_zhy_CircleMenu\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v14\\values-v14.xml",
+        "outputFile": "E:\\Android\\Project\\CircleMenu\\sample_zhy_CircleMenu\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v14\\values-v14.xml",
         "map": [
             {
                 "to": {
@@ -12,7 +12,7 @@
                     "endOffset": 201
                 },
                 "from": {
-                    "file": "C:\\Projects\\CircleMenu\\sample_zhy_CircleMenu\\src\\main\\res\\values-v14\\styles.xml",
+                    "file": "E:\\Android\\Project\\CircleMenu\\sample_zhy_CircleMenu\\src\\main\\res\\values-v14\\styles.xml",
                     "position": {
                         "startLine": 7,
                         "startColumn": 4,

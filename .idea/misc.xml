@@ -4,7 +4,7 @@
     <entry_points version="2.0" />
   </component>
   <component name="MarkdownProjectSettings">
-    <PreviewSettings splitEditorLayout="SPLIT" splitEditorPreview="PREVIEW" useGrayscaleRendering="false" zoomFactor="1.0" maxImageWidth="0" showGitHubPageIfSynced="false" allowBrowsingInPreview="false" synchronizePreviewPosition="true" highlightPreviewType="NONE" highlightFadeOut="5" highlightOnTyping="true" synchronizeSourcePosition="true" verticallyAlignSourceAndPreviewSyncPosition="true" showSearchHighlightsInPreview="false" showSelectionInPreview="true">
+    <PreviewSettings splitEditorLayout="SPLIT" splitEditorPreview="PREVIEW" useGrayscaleRendering="false" zoomFactor="1.0" maxImageWidth="0" showGitHubPageIfSynced="false" allowBrowsingInPreview="false" synchronizePreviewPosition="true" highlightPreviewType="LINE" highlightFadeOut="5" highlightOnTyping="true" synchronizeSourcePosition="true">
       <PanelProvider>
         <provider providerId="com.vladsch.idea.multimarkdown.editor.swing.html.panel" providerName="Default - Swing" />
       </PanelProvider>
@@ -13,7 +13,6 @@
       <PegdownExtensions>
         <option name="ABBREVIATIONS" value="false" />
         <option name="ANCHORLINKS" value="true" />
-        <option name="ASIDE" value="false" />
         <option name="ATXHEADERSPACE" value="true" />
         <option name="AUTOLINKS" value="true" />
         <option name="DEFINITIONS" value="false" />
@@ -39,7 +38,6 @@
         <option name="DUMMY" value="false" />
         <option name="EMOJI_SHORTCUTS" value="true" />
         <option name="FLEXMARK_FRONT_MATTER" value="false" />
-        <option name="GFM_LOOSE_BLANK_LINE_AFTER_ITEM_PARA" value="true" />
         <option name="GFM_TABLE_RENDERING" value="true" />
         <option name="GITBOOK_URL_ENCODING" value="false" />
         <option name="GITHUB_EMOJI_URL" value="false" />
@@ -70,13 +68,6 @@
       <textMaps />
     </LinkMapSettings>
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHome" value="Bundled (Maven 3)" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
   <component name="NullableNotNullManager">
     <option name="myDefaultNullable" value="android.support.annotation.Nullable" />
     <option name="myDefaultNotNull" value="android.support.annotation.NonNull" />
@@ -101,31 +92,6 @@
       </value>
     </option>
   </component>
-  <component name="ProjectInspectionProfilesVisibleTreeState">
-    <entry key="Project Default">
-      <profile-state>
-        <expanded-state>
-          <State>
-            <id />
-          </State>
-          <State>
-            <id>Android Lint</id>
-          </State>
-          <State>
-            <id>General</id>
-          </State>
-          <State>
-            <id>Maven</id>
-          </State>
-        </expanded-state>
-        <selected-state>
-          <State>
-            <id>AndroidLintUseCompoundDrawables</id>
-          </State>
-        </selected-state>
-      </profile-state>
-    </entry>
-  </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
@@ -141,9 +107,6 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
-  </component>
-  <component name="SvnConfiguration">
-    <configuration>$USER_HOME$/.subversion</configuration>
   </component>
   <component name="masterDetails">
     <states>

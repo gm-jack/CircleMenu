@@ -4,8 +4,11 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CircleMenu.iml" filepath="$PROJECT_DIR$/CircleMenu.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/circlemenu_three/circlemenu_three.iml" filepath="$PROJECT_DIR$/circlemenu_three/circlemenu_three.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CircularMenu/circularmenu.iml" filepath="$PROJECT_DIR$/CircularMenu/circularmenu.iml" />
       <module fileurl="file://$PROJECT_DIR$/library_zhy_CircleMenu/library_zhy_CircleMenu.iml" filepath="$PROJECT_DIR$/library_zhy_CircleMenu/library_zhy_CircleMenu.iml" />
       <module fileurl="file://$PROJECT_DIR$/sample_zhy_CircleMenu/sample_zhy_CircleMenu.iml" filepath="$PROJECT_DIR$/sample_zhy_CircleMenu/sample_zhy_CircleMenu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wheelmenusample/wheelmenusample.iml" filepath="$PROJECT_DIR$/wheelmenusample/wheelmenusample.iml" />
     </modules>
   </component>
 </project>
