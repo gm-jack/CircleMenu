@@ -15,10 +15,11 @@ public final class R {
         public static final int ic_launcher = 0x7f020000;
     }
     public static final class id {
-        public static final int action_settings = 0x7f060003;
+        public static final int action_settings = 0x7f060004;
         public static final int id_circle_menu_item_center = 0x7f060000;
         public static final int id_circle_menu_item_image = 0x7f060001;
-        public static final int id_circle_menu_item_text = 0x7f060002;
+        public static final int id_circle_menu_item_more = 0x7f060002;
+        public static final int id_circle_menu_item_text = 0x7f060003;
     }
     public static final class layout {
         public static final int circle_menu_item = 0x7f030000;

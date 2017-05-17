@@ -18,10 +18,11 @@ public final class R {
         public static int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static int action_settings=0x7f060003;
+        public static int action_settings=0x7f060004;
         public static int id_circle_menu_item_center=0x7f060000;
         public static int id_circle_menu_item_image=0x7f060001;
-        public static int id_circle_menu_item_text=0x7f060002;
+        public static int id_circle_menu_item_more=0x7f060002;
+        public static int id_circle_menu_item_text=0x7f060003;
     }
     public static final class layout {
         public static int circle_menu_item=0x7f030000;
@@ -37,15 +38,8 @@ public final class R {
     public static final class style {
         /**  API 11 theme customizations can go here. 
  API 14 theme customizations can go here. 
-
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        
          */
         public static int AppBaseTheme=0x7f050000;
-        /**  All customizations that are NOT specific to a particular API-level can go here. 
-         */
         public static int AppTheme=0x7f050001;
     }
 }

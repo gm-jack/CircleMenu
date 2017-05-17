@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.zhy.ccbCricleMenu.R;
 
@@ -92,6 +91,9 @@ public class CircleMenuLayout extends ViewGroup {
     private float mAngleDelay;
     private int mPosition;
     private OnScrollItemListener onScrollItemListener;
+
+    private int childCount;
+    private LayoutInflater mInflater;
 
     public CircleMenuLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -210,10 +212,8 @@ public class CircleMenuLayout extends ViewGroup {
         int layoutRadius = mRadius;
 
         // Laying out the child views
-        int childCount;
         if (isFirst) {
             childCount = mChildCount;
-            isFirst = false;
             // 根据menu item的个数，计算角度
             mAngleDelay = 360 / (childCount - 1);
         } else {
@@ -263,17 +263,19 @@ public class CircleMenuLayout extends ViewGroup {
                     * cWidth);
 
             child.layout(left, top, left + cWidth, top + cWidth);
-            if (mStartAngle >= 180 - mAngleDelay && mStartAngle <= 180 - mAngleDelay / 2 && i != childCount - 1)
-                mStartAngle -= mAngleDelay * 2;
-            else
-                mStartAngle += mAngleDelay;
+//            if (mStartAngle >= 180 - mAngleDelay && mStartAngle <= 180 - mAngleDelay / 2 && i != childCount - 1)
+//                mStartAngle -= mAngleDelay * 2;
+//            else
+            mStartAngle += mAngleDelay;
         }
         for (int i = 0; i < mDoubleList.size(); i++) {
             if (mDoubleList.get(i) <= 180 + mAngleDelay / 2 && mDoubleList.get(i) >= 180 - mAngleDelay / 2) {
-                mPosition = i;
-                Log.e("TAG", "" + mPosition);
-                if (onScrollItemListener != null) {
-                    onScrollItemListener.getItem(mPosition);
+                if (mPosition != i) {
+                    mPosition = i;
+//                    Log.e("TAG", "" + mPosition);
+                    if (onScrollItemListener != null) {
+                        onScrollItemListener.getItem(mPosition);
+                    }
                 }
             }
         }
@@ -299,6 +301,29 @@ public class CircleMenuLayout extends ViewGroup {
             cView.layout(cl, cl, cr, cr);
         }
 
+        if (isFirst) {
+            isFirst = false;
+            if (mInflater != null) {
+                View parentView = mInflater.inflate(mMenuItemLayoutId, this, false);
+                ImageView iv = (ImageView) parentView
+                        .findViewById(R.id.id_circle_menu_item_image);
+                if (iv != null) {
+                    iv.setVisibility(View.VISIBLE);
+                    iv.setImageResource(mItemImgs[0]);
+                    iv.setOnClickListener(new OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            if (mOnMenuItemClickListener != null) {
+                                mOnMenuItemClickListener.itemClick(v, childCount - 2);
+                            }
+                        }
+                    });
+                }
+                // 添加view到容器中
+                addView(parentView, childCount - 2);
+            }
+        }
     }
 
     /**
@@ -446,15 +471,15 @@ public class CircleMenuLayout extends ViewGroup {
      * 添加菜单项
      */
     private void addMenuItems() {
-        LayoutInflater mInflater = LayoutInflater.from(getContext());
+        mInflater = LayoutInflater.from(getContext());
 
         /**
          * 根据用户设置的参数，初始化view
          */
         for (int i = 0; i < mMenuItemCount; i++) {
             final int j = i;
-            View view = mInflater.inflate(mMenuItemLayoutId, this, false);
-            ImageView iv = (ImageView) view
+            View parentView = mInflater.inflate(mMenuItemLayoutId, this, false);
+            ImageView iv = (ImageView) parentView
                     .findViewById(R.id.id_circle_menu_item_image);
 
             if (iv != null) {
@@ -472,7 +497,7 @@ public class CircleMenuLayout extends ViewGroup {
             }
 
             // 添加view到容器中
-            addView(view);
+            addView(parentView);
         }
 
 //		for (int i = 0; i < mGoneIds.length; i++) {

@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import com.zhy.view.CircleMenuLayout;
 import com.zhy.view.CircleMenuLayout.OnMenuItemClickListener;
+import com.zhy.view.OnScrollItemListener;
 
 /**
  * <pre>
@@ -40,7 +41,13 @@ public class CircleActivity extends Activity {
         mCircleMenuLayout = (CircleMenuLayout) findViewById(R.id.id_menulayout);
         mCircleMenuLayout.setMenuItemIconsAndTexts(mItemImgs, mGoneImgs);
 
-
+        mCircleMenuLayout.setOnScrollItemListener(new OnScrollItemListener() {
+            @Override
+            public void getItem(int position) {
+                Toast.makeText(CircleActivity.this, "" + position,
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
         mCircleMenuLayout.setOnMenuItemClickListener(new OnMenuItemClickListener() {
 
             @Override
