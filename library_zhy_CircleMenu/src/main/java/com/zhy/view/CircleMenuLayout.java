@@ -120,7 +120,6 @@ public class CircleMenuLayout extends ViewGroup {
     private int mCenterY;
     //是否顺时针
     private boolean isClockwise = true;
-    private float interAngle = 0;
 
     public CircleMenuLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -423,6 +422,8 @@ public class CircleMenuLayout extends ViewGroup {
                 }
                 // 重新布局
                 requestLayout();
+                float totalX = x - mLastX;
+                float totalY = y - mLastY;
 
                 mLastX = x;
 
@@ -431,9 +432,9 @@ public class CircleMenuLayout extends ViewGroup {
                 break;
             case MotionEvent.ACTION_UP:
                 if (isClockwise) {
-                    post(mFlingRunnable = new AutoFlingRunnable(-mAngleDelay));
-                } else {
                     post(mFlingRunnable = new AutoFlingRunnable(mAngleDelay));
+                } else {
+                    post(mFlingRunnable = new AutoFlingRunnable(-mAngleDelay));
                 }
 //                // 如果达到该值认为是快速移动
 //                if (!isFling) {
@@ -650,22 +651,15 @@ public class CircleMenuLayout extends ViewGroup {
         }
 
         public void run() {
-            if ((int) Math.abs(angelPerSecond) <= 1) {
-                isFling = false;
-                interAngle = 0;
-                return;
+            // 如果小于20,则停止
+
+            if (listPosition == 0) {
+                listPosition = childCount - 1;
             }
-//            if (listPosition == 0) {
-//                listPosition = childCount - 1;
-//            }
-//            Log.e("TAG", "(int) Math.abs(angelPerSecond) = " + (int) Math.abs(angelPerSecond) + " , mDoubleList.get(listPosition - 1) =" + mDoubleList.get(listPosition - 1) + " , mlistPosition =" + listPosition);
+            Log.e("TAG", "(int) Math.abs(angelPerSecond) = " + (int) Math.abs(angelPerSecond) + " , mDoubleList.get(listPosition - 1) =" + mDoubleList.get(listPosition - 1) + " , mlistPosition =" + listPosition);
             // 不断改变mStartAngle，让其滚动，/30为了避免滚动太快
-            mStartAngle += (angelPerSecond / 30);
-            // 逐渐减小这个值
-            angelPerSecond /= 1.0666F;
-            Log.e("TAG","angelPerSecond   "+angelPerSecond);
-            isFling = true;
-            postDelayed(this, 30);
+            mStartAngle += angelPerSecond;
+            isFling = false;
             // 重新布局
             requestLayout();
         }
