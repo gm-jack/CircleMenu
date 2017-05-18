@@ -1,4 +1,4 @@
-#Wed May 17 22:46:15 CST 2017
+#Thu May 18 22:58:39 CST 2017
 base.0=E\:\\Android\\Project\\CircleMenu\\sample_zhy_CircleMenu\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_3368b98e529f1ec0a1b47538b88a965457e05f41
 renamed.1=classes2.dex
 renamed.0=classes.dex

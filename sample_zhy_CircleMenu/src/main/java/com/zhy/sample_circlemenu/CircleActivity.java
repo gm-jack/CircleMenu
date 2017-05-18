@@ -65,7 +65,5 @@ public class CircleActivity extends Activity {
 
             }
         });
-
     }
-
 }
