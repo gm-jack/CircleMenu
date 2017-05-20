@@ -8,12 +8,8 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/CircularMenu" />
-            <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/circlemenu_three" />
             <option value="$PROJECT_DIR$/library_zhy_CircleMenu" />
             <option value="$PROJECT_DIR$/sample_zhy_CircleMenu" />
-            <option value="$PROJECT_DIR$/wheelmenusample" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

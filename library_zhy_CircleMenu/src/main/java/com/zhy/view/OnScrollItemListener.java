@@ -6,4 +6,10 @@ package com.zhy.view;
 
 public interface OnScrollItemListener {
     void getItem(int position);
+
+    void toStart();
+
+    void toEnd();
+
+    void more();
 }

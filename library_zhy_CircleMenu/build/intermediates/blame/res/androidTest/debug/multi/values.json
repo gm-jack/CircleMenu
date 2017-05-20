@@ -11,7 +11,14 @@
                     "endOffset": 108
                 },
                 "from": {
-                    "file": "E:\\Android\\Project\\CircleMenu\\library_zhy_CircleMenu\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml"
+                    "file": "E:\\Android\\Project\\CircleMenu\\library_zhy_CircleMenu\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 57,
+                        "endOffset": 108
+                    }
                 }
             },
             {
@@ -23,7 +30,14 @@
                     "endOffset": 164
                 },
                 "from": {
-                    "file": "E:\\Android\\Project\\CircleMenu\\library_zhy_CircleMenu\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml"
+                    "file": "E:\\Android\\Project\\CircleMenu\\library_zhy_CircleMenu\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 113,
+                        "endColumn": 55,
+                        "endOffset": 164
+                    }
                 }
             },
             {
@@ -35,7 +49,14 @@
                     "endOffset": 220
                 },
                 "from": {
-                    "file": "E:\\Android\\Project\\CircleMenu\\library_zhy_CircleMenu\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml"
+                    "file": "E:\\Android\\Project\\CircleMenu\\library_zhy_CircleMenu\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 169,
+                        "endColumn": 55,
+                        "endOffset": 220
+                    }
                 }
             },
             {
@@ -47,7 +68,14 @@
                     "endOffset": 275
                 },
                 "from": {
-                    "file": "E:\\Android\\Project\\CircleMenu\\library_zhy_CircleMenu\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml"
+                    "file": "E:\\Android\\Project\\CircleMenu\\library_zhy_CircleMenu\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 225,
+                        "endColumn": 54,
+                        "endOffset": 275
+                    }
                 }
             },
             {
@@ -78,7 +106,14 @@
                     "endOffset": 383
                 },
                 "from": {
-                    "file": "E:\\Android\\Project\\CircleMenu\\library_zhy_CircleMenu\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml"
+                    "file": "E:\\Android\\Project\\CircleMenu\\library_zhy_CircleMenu\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 334,
+                        "endColumn": 53,
+                        "endOffset": 383
+                    }
                 }
             },
             {
@@ -90,7 +125,14 @@
                     "endOffset": 432
                 },
                 "from": {
-                    "file": "E:\\Android\\Project\\CircleMenu\\library_zhy_CircleMenu\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml"
+                    "file": "E:\\Android\\Project\\CircleMenu\\library_zhy_CircleMenu\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 388,
+                        "endColumn": 48,
+                        "endOffset": 432
+                    }
                 }
             },
             {
@@ -102,7 +144,14 @@
                     "endOffset": 476
                 },
                 "from": {
-                    "file": "E:\\Android\\Project\\CircleMenu\\library_zhy_CircleMenu\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml"
+                    "file": "E:\\Android\\Project\\CircleMenu\\library_zhy_CircleMenu\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 437,
+                        "endColumn": 43,
+                        "endOffset": 476
+                    }
                 }
             },
             {
@@ -114,7 +163,14 @@
                     "endOffset": 529
                 },
                 "from": {
-                    "file": "E:\\Android\\Project\\CircleMenu\\library_zhy_CircleMenu\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml"
+                    "file": "E:\\Android\\Project\\CircleMenu\\library_zhy_CircleMenu\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 481,
+                        "endColumn": 52,
+                        "endOffset": 529
+                    }
                 }
             },
             {
@@ -122,25 +178,41 @@
                     "startLine": 11,
                     "startColumn": 4,
                     "startOffset": 534,
-                    "endLine": 13,
+                    "endLine": 17,
                     "endColumn": 12,
-                    "endOffset": 612
+                    "endOffset": 820
                 },
                 "from": {
-                    "file": "E:\\Android\\Project\\CircleMenu\\library_zhy_CircleMenu\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml"
+                    "file": "E:\\Android\\Project\\CircleMenu\\library_zhy_CircleMenu\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 534,
+                        "endLine": 17,
+                        "endColumn": 12,
+                        "endOffset": 820
+                    }
                 }
             },
             {
                 "to": {
-                    "startLine": 14,
+                    "startLine": 18,
                     "startColumn": 4,
-                    "startOffset": 617,
-                    "endLine": 16,
+                    "startOffset": 825,
+                    "endLine": 20,
                     "endColumn": 12,
-                    "endOffset": 684
+                    "endOffset": 980
                 },
                 "from": {
-                    "file": "E:\\Android\\Project\\CircleMenu\\library_zhy_CircleMenu\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml"
+                    "file": "E:\\Android\\Project\\CircleMenu\\library_zhy_CircleMenu\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 825,
+                        "endLine": 20,
+                        "endColumn": 12,
+                        "endOffset": 980
+                    }
                 }
             }
         ]

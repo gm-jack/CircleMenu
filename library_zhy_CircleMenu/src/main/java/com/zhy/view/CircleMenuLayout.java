@@ -1,6 +1,8 @@
 package com.zhy.view;
 
+import android.annotation.TargetApi;
 import android.content.Context;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -108,8 +110,9 @@ public class CircleMenuLayout extends ViewGroup {
      */
     private boolean isFirst = true;
     private int[] allItem;
+    private int[] visiabllAllItem;
     private float mAngleDelay;
-    private int mPosition;
+    private int mPosition = 0;
     private OnScrollItemListener onScrollItemListener;
     private int childCount;
     private LayoutInflater mInflater;
@@ -119,7 +122,10 @@ public class CircleMenuLayout extends ViewGroup {
     //view中心点Y轴
     private int mCenterY;
     //是否顺时针
-    private boolean isClockwise = true;
+    private boolean isClockwise = false;
+    private List<View> mImageList = new ArrayList<View>();
+    private int mRealPostion = 7;
+    private int mItemPosition = 0;
 
     public CircleMenuLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -270,10 +276,10 @@ public class CircleMenuLayout extends ViewGroup {
             }
 
             mStartAngle %= 360;
-            if (isFirst)
+            if (isFirst && i <= mRealPostion)
                 mDoubleList.add(mStartAngle);
 
-            Log.e("angle", "mStartAngle   " + mStartAngle);
+//            Log.e("angle", "mStartAngle   " + mStartAngle);
             // 计算，中心点到menu item中心的距离
             float tmp = layoutRadius / 2f - cWidth / 2 - mPadding;
 
@@ -297,13 +303,11 @@ public class CircleMenuLayout extends ViewGroup {
             mStartAngle += mAngleDelay;
         }
         for (int i = 0; i < mDoubleList.size(); i++) {
-            if (mDoubleList.get(i) <= 180 + mAngleDelay / 2 && mDoubleList.get(i) >= 180 - mAngleDelay / 2) {
-                if (mPosition != i) {
-                    mPosition = i;
-//                    Log.e("TAG", "" + mPosition);
-                    if (onScrollItemListener != null) {
-                        onScrollItemListener.getItem(mPosition);
-                    }
+            Log.e("TAG", "" + mDoubleList.get(i));
+            if (mDoubleList.get(i) == 180) {
+                Log.e("TAG", "" + i);
+                if (onScrollItemListener != null) {
+                    onScrollItemListener.getItem(mPosition);
                 }
             }
         }
@@ -328,7 +332,7 @@ public class CircleMenuLayout extends ViewGroup {
             int cr = cl + cView.getMeasuredWidth();
             mCenterX = cr - cl;
             mCenterY = cr - cl;
-            Log.e("measure", "mCenterX  " + mCenterX + "   mCenterY  " + mCenterY);
+//            Log.e("measure", "mCenterX  " + mCenterX + "   mCenterY  " + mCenterY);
             cView.layout(cl, cl, cr, cr);
         }
 
@@ -336,22 +340,23 @@ public class CircleMenuLayout extends ViewGroup {
             isFirst = false;
             if (mInflater != null) {
                 View parentView = mInflater.inflate(mMenuItemLayoutId, this, false);
-                ImageView iv = (ImageView) parentView
+                final ImageView iv = (ImageView) parentView
                         .findViewById(R.id.id_circle_menu_item_image);
                 if (iv != null) {
                     iv.setVisibility(View.VISIBLE);
-                    iv.setBackgroundResource(mItemImgs[0]);
-                    iv.setTag(mItemImgs[0]);
+                    iv.setBackgroundResource(mGoneIds[0]);
+                    iv.setTag(mGoneIds[0]);
                     iv.setOnClickListener(new OnClickListener() {
                         @Override
                         public void onClick(View v) {
 
                             if (mOnMenuItemClickListener != null) {
-                                mOnMenuItemClickListener.itemClick(v, childCount - 1);
+                                mOnMenuItemClickListener.itemClick(v, integerMap.get(iv.getTag()));
                             }
                         }
                     });
                 }
+                mImageList.add(parentView);
                 // 添加view到容器中
                 addView(parentView, childCount - 1);
             }
@@ -384,17 +389,17 @@ public class CircleMenuLayout extends ViewGroup {
                 mTmpAngle = 0;
 
                 // 如果当前已经在快速滚动
-                if (isFling) {
-                    // 移除快速滚动的回调
-                    removeCallbacks(mFlingRunnable);
-                    isFling = false;
-                    return true;
-                }
+//                if (isFling) {
+//                    // 移除快速滚动的回调
+//                    removeCallbacks(mFlingRunnable);
+//                    isFling = false;
+//                    return true;
+//                }
 
                 break;
             case MotionEvent.ACTION_MOVE:
                 //防止过多layout
-                if (Math.abs(x - mLastX) < 2 || Math.abs(y - mLastY) < 2)
+                if (Math.abs(x - mLastX) < 3 || Math.abs(y - mLastY) < 3)
                     return true;
                 /**
                  * 获得开始的角度
@@ -408,34 +413,81 @@ public class CircleMenuLayout extends ViewGroup {
 
                 // 如果是一、四象限，则直接end-start，角度值都是正值
                 if (getQuadrant(x, y) == 1 || getQuadrant(x, y) == 4) {
-                    mStartAngle += end - start;
+//                    mStartAngle += end - start;
                     mTmpAngle += end - start;
                     isClockwise = true;
-                    Log.e("move", "end - start = " + (end - start));
+//                    Log.e("move", "end - start = " + (end - start));
                 } else if (getQuadrant(x, y) == 2 || getQuadrant(x, y) == 3)
                 // 二、三象限，色角度值是付值
                 {
-                    mStartAngle += start - end;
+//                    mStartAngle += start - end;
                     mTmpAngle += start - end;
-                    isClockwise = false;
-                    Log.e("move", "start - end = " + (start - end));
+                    isClockwise = true;
+//                    Log.e("move", "start - end = " + (start - end));
                 }
-                // 重新布局
-                requestLayout();
-                float totalX = x - mLastX;
-                float totalY = y - mLastY;
-
                 mLastX = x;
-
                 mLastY = y;
 
                 break;
             case MotionEvent.ACTION_UP:
-                if (isClockwise) {
-                    post(mFlingRunnable = new AutoFlingRunnable(mAngleDelay));
-                } else {
-                    post(mFlingRunnable = new AutoFlingRunnable(-mAngleDelay));
+                if (!isClockwise) {
+                    return super.dispatchTouchEvent(event);
                 }
+
+                isClockwise = false;
+
+                if (mTmpAngle >= 0) {
+                    //顺时针
+                    mPosition--;
+                    mItemPosition++;
+//                    Log.e("mItemPosition", "mItemPosition  " + mItemPosition);
+                    if (mItemPosition >= allItem.length + 1) {
+                        mItemPosition--;
+                        if (onScrollItemListener != null) {
+                            onScrollItemListener.toEnd();
+                        }
+                        return true;
+                    }
+
+                    listPosition++;
+
+                    if (listPosition == mRealPostion) {
+                        listPosition = 0;
+                    }
+
+                    positiveExchagePosition();
+                } else {
+                    //逆时针
+                    mPosition++;
+                    mItemPosition--;
+//                    Log.e("mItemPosition", "mItemPosition  " + mItemPosition + "  (allItem.length - mMenuItemCount) " + (allItem.length - mMenuItemCount));
+                    if (mItemPosition <= (mMenuItemCount - 2)) {
+                        mItemPosition++;
+                        if (onScrollItemListener != null) {
+                            onScrollItemListener.toStart();
+                        }
+                        return true;
+                    }
+
+                    listPosition--;
+
+                    if (listPosition == -1) {
+                        listPosition = mRealPostion - 1;
+                    }
+
+                    nigetiveExchagePosition();
+                }
+//                Log.e("TAG", "mDoubleList.get(listPosition)  " + mDoubleList.get(listPosition));
+//                if (!isFling) {
+//                    //线性动画
+//                    post(mFlingRunnable = new AutoFlingRunnable(mDoubleList.get(listPosition)));
+//                    return true;
+//                }
+                mStartAngle = mDoubleList.get(listPosition);
+                // 重新布局
+                requestLayout();
+
+
 //                // 如果达到该值认为是快速移动
 //                if (!isFling) {
 //                    listPosition = (++listPosition) % 6;
@@ -447,6 +499,97 @@ public class CircleMenuLayout extends ViewGroup {
                 break;
         }
         return super.dispatchTouchEvent(event);
+    }
+
+    /**
+     * 逆时针change数组和集合
+     */
+    private void nigetiveExchagePosition() {
+        int j = 0;
+
+        int ints = visiabllAllItem[0];
+        for (int i = 0; i < visiabllAllItem.length; i++) {
+            if (i != visiabllAllItem.length - 1) {
+                visiabllAllItem[i] = visiabllAllItem[i + 1];
+            } else {
+                visiabllAllItem[visiabllAllItem.length - 1] = ints;
+            }
+        }
+
+//        Log.e("TAG", "mImageList.size()  " + mImageList.size());
+        for (int i = 0; i < mImageList.size(); i++) {
+            View view = mImageList.get(i);
+            final ImageView iv = (ImageView) view
+                    .findViewById(R.id.id_circle_menu_item_image);
+            if (i == 0) {
+                iv.setVisibility(View.INVISIBLE);
+            } else {
+                iv.setVisibility(View.VISIBLE);
+                iv.setTag(visiabllAllItem[j]);
+                iv.setBackgroundResource(visiabllAllItem[j++]);
+                iv.setOnClickListener(null);
+                iv.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        if (mOnMenuItemClickListener != null) {
+                            mOnMenuItemClickListener.itemClick(v, integerMap.get(iv.getTag()));
+                        }
+                    }
+                });
+
+            }
+        }
+        View view = mImageList.get(0);
+        for (int i = 0; i < mImageList.size(); i++) {
+            if (i != mImageList.size() - 1) {
+                mImageList.set(i, mImageList.get(i + 1));
+            } else {
+                mImageList.set(mImageList.size() - 1, view);
+            }
+        }
+    }
+
+    /**
+     * 顺时针change数组和集合
+     */
+    private void positiveExchagePosition() {
+        int j = 0;
+
+        int ints = visiabllAllItem[visiabllAllItem.length - 1];
+        for (int i = 1; i < visiabllAllItem.length; i++) {
+            visiabllAllItem[visiabllAllItem.length - i] = visiabllAllItem[visiabllAllItem.length - i - 1];
+        }
+        visiabllAllItem[0] = ints;
+
+        View views = mImageList.get(mImageList.size() - 1);
+        for (int i = 1; i < mImageList.size(); i++) {
+            mImageList.set(mImageList.size() - i, mImageList.get(mImageList.size() - i - 1));
+        }
+        mImageList.set(0, views);
+
+        for (int i = 0; i < mImageList.size(); i++) {
+            View view = mImageList.get(i);
+            final ImageView iv = (ImageView) view
+                    .findViewById(R.id.id_circle_menu_item_image);
+            if (i == mImageList.size() - 1) {
+                iv.setVisibility(View.INVISIBLE);
+            } else {
+                iv.setVisibility(View.VISIBLE);
+                iv.setTag(visiabllAllItem[j]);
+                iv.setBackgroundResource(visiabllAllItem[j++]);
+                iv.setOnClickListener(null);
+                iv.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        if (mOnMenuItemClickListener != null) {
+                            mOnMenuItemClickListener.itemClick(v, integerMap.get(iv.getTag()));
+                        }
+                    }
+                });
+            }
+        }
     }
 
     /**
@@ -500,28 +643,34 @@ public class CircleMenuLayout extends ViewGroup {
         copyItemToAll();
         // 参数检查
         if (resIds == null) {
-            throw new IllegalArgumentException("菜单项至少设置六个");
+            throw new IllegalArgumentException("菜单项至少设置七个");
+        }
+        if (goneIds.length < 1) {
+            throw new IllegalArgumentException("隐藏视图至少设置一个");
         }
 
         // 初始化mMenuCount
         mMenuItemCount = resIds.length;
 
-        addMenuItems();
         setItemPosition();
+        addMenuItems();
     }
 
     /**
      * 复制数组到新数组
      */
+    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
     private void copyItemToAll() {
         int i = 0;
-        allItem = new int[mItemImgs.length + mGoneIds.length];
-        for (; i < mItemImgs.length; i++) {
+        allItem = new int[mItemImgs.length + mGoneIds.length - 1];
+        for (; i < mItemImgs.length - 1; i++) {
             allItem[i] = mItemImgs[i];
         }
         for (int j = 0; j < mGoneIds.length; j++, i++) {
             allItem[i] = mGoneIds[j];
         }
+        visiabllAllItem = Arrays.copyOf(allItem, allItem.length);
+        mItemPosition = allItem.length;
     }
 
     /**
@@ -529,8 +678,8 @@ public class CircleMenuLayout extends ViewGroup {
      */
     private void setItemPosition() {
         integerMap.clear();
-        for (int i = 0; i < mItemImgs.length + mGoneIds.length; i++) {
-            integerMap.put(allItem[i], i);
+        for (int i = 0; i < visiabllAllItem.length; i++) {
+            integerMap.put(visiabllAllItem[i], i);
         }
     }
 
@@ -548,29 +697,43 @@ public class CircleMenuLayout extends ViewGroup {
      */
     private void addMenuItems() {
         mInflater = LayoutInflater.from(getContext());
-
+        mImageList.clear();
         /**
          * 根据用户设置的参数，初始化view
          */
         for (int i = 0; i < mMenuItemCount; i++) {
             final int j = i;
             View parentView = mInflater.inflate(mMenuItemLayoutId, this, false);
-            ImageView iv = (ImageView) parentView
+            final ImageView iv = (ImageView) parentView
                     .findViewById(R.id.id_circle_menu_item_image);
+            //存储ImageView
+            if (i != mMenuItemCount - 1)
+                mImageList.add(parentView);
 
             if (iv != null) {
                 iv.setVisibility(View.VISIBLE);
                 iv.setBackgroundResource(mItemImgs[i]);
                 iv.setTag(mItemImgs[i]);
-                iv.setOnClickListener(new OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+                if (i == mMenuItemCount - 1) {
+                    iv.setOnClickListener(new OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
 
-                        if (mOnMenuItemClickListener != null) {
-                            mOnMenuItemClickListener.itemClick(v, j);
+                            if (onScrollItemListener != null) {
+                                onScrollItemListener.more();
+                            }
                         }
-                    }
-                });
+                    });
+                } else
+                    iv.setOnClickListener(new OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            if (mOnMenuItemClickListener != null) {
+                                mOnMenuItemClickListener.itemClick(v, integerMap.get(iv.getTag()));
+                            }
+                        }
+                    });
             }
 
             // 添加view到容器中
@@ -644,22 +807,26 @@ public class CircleMenuLayout extends ViewGroup {
      */
     private class AutoFlingRunnable implements Runnable {
 
-        private float angelPerSecond;
+        private double angelPerSecond;
+        private double count = 30;
+        private final double real;
 
-        public AutoFlingRunnable(float velocity) {
+        public AutoFlingRunnable(double velocity) {
             this.angelPerSecond = velocity;
+            real = velocity - mStartAngle;
         }
 
         public void run() {
             // 如果小于20,则停止
-
-            if (listPosition == 0) {
-                listPosition = childCount - 1;
+            Log.e("delayAngle", "angelPerSecond  " + angelPerSecond + "   mStartAngle" + mStartAngle + "   real  " + real);
+            if (mStartAngle == angelPerSecond) {
+                isFling = false;
+                return;
             }
-            Log.e("TAG", "(int) Math.abs(angelPerSecond) = " + (int) Math.abs(angelPerSecond) + " , mDoubleList.get(listPosition - 1) =" + mDoubleList.get(listPosition - 1) + " , mlistPosition =" + listPosition);
+            isFling = true;
             // 不断改变mStartAngle，让其滚动，/30为了避免滚动太快
-            mStartAngle += angelPerSecond;
-            isFling = false;
+            mStartAngle += (real / count);
+            postDelayed(this, 30);
             // 重新布局
             requestLayout();
         }

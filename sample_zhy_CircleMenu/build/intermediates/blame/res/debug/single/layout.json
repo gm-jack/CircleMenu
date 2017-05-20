@@ -6,9 +6,5 @@
     {
         "merged": "E:\\Android\\Project\\CircleMenu\\sample_zhy_CircleMenu\\build\\intermediates\\res\\merged\\debug\\layout\\circle_menu_item.xml",
         "source": "E:\\Android\\Project\\CircleMenu\\library_zhy_CircleMenu\\build\\intermediates\\bundles\\default\\res\\layout\\circle_menu_item.xml"
-    },
-    {
-        "merged": "E:\\Android\\Project\\CircleMenu\\sample_zhy_CircleMenu\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
-        "source": "E:\\Android\\Project\\CircleMenu\\sample_zhy_CircleMenu\\src\\main\\res\\layout\\activity_main.xml"
     }
 ]

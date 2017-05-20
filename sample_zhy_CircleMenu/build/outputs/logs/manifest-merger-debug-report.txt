@@ -1,8 +1,8 @@
 -- Merging decision tree log ---
 manifest
-ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:2:1-31:12
+ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:2:1-25:12
 	package
-		ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:3:5-40
+		ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:3:5-36
 		INJECTED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml
 		INJECTED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml
 	android:versionName
@@ -27,7 +27,7 @@ MERGED from [CircleMenu:library_zhy_CircleMenu:unspecified] E:\Android\Project\C
 		INJECTED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml
 		INJECTED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml
 application
-ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:11:5-29:19
+ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:11:5-23:19
 MERGED from [CircleMenu:library_zhy_CircleMenu:unspecified] E:\Android\Project\CircleMenu\library_zhy_CircleMenu\build\intermediates\bundles\default\AndroidManifest.xml:11:5-16:19
 	android:label
 		ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:14:9-41
@@ -37,27 +37,17 @@ MERGED from [CircleMenu:library_zhy_CircleMenu:unspecified] E:\Android\Project\C
 		ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:13:9-45
 	android:theme
 		ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:15:9-40
-activity#com.zhy.sample_circlemenu.MainActivity
-ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:16:9-19:20
-	android:label
-		ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:18:13-45
+activity#com.sample_circlemenu.CircleActivity
+ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:16:9-22:20
 	android:name
-		ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:17:13-66
-activity#com.zhy.sample_circlemenu.CCBActivity
-ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:20:9-21:20
-	android:name
-		ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:20:19-71
-activity#com.zhy.sample_circlemenu.CircleActivity
-ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:22:9-28:20
-	android:name
-		ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:22:19-74
+		ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:16:19-70
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:23:13-27:29
+ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:17:13-21:29
 action#android.intent.action.MAIN
-ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:24:17-69
+ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:18:17-69
 	android:name
-		ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:24:25-66
+		ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:18:25-66
 category#android.intent.category.LAUNCHER
-ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:26:17-77
+ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:20:17-77
 	android:name
-		ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:26:27-74
+		ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:20:27-74
