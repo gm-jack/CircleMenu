@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.zhy.sample_circlemenu"
-        minSdkVersion 8
+        minSdkVersion 14
         targetSdkVersion 19
     }
 
@@ -20,5 +20,5 @@ android {
 
 dependencies {
     compile project(':library_zhy_CircleMenu')
-    compile 'com.android.support:support-v4:19.+'
+
 }

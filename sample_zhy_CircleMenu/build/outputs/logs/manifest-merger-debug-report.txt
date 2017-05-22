@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:2:1-25:12
+ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:2:1-22:12
 	package
 		ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:3:5-36
 		INJECTED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml
@@ -15,39 +15,42 @@ ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidM
 		INJECTED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:2:11-69
+uses-permission#android.permission.INTERNET
+ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:7:5-67
+	android:name
+		ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:7:22-64
+application
+ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:8:5-20:19
+MERGED from [CircleMenu:library_zhy_CircleMenu:unspecified] E:\Android\Project\CircleMenu\library_zhy_CircleMenu\build\intermediates\bundles\default\AndroidManifest.xml:11:5-16:19
+	android:label
+		ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:11:9-41
+	android:allowBackup
+		ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:9:9-35
+	android:icon
+		ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:10:9-45
+	android:theme
+		ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:12:9-40
+activity#com.sample_circlemenu.CircleActivity
+ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:13:9-19:20
+	android:name
+		ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:13:19-70
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:14:13-18:29
+action#android.intent.action.MAIN
+ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:15:17-69
+	android:name
+		ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:15:25-66
+category#android.intent.category.LAUNCHER
+ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:17:17-77
+	android:name
+		ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:17:27-74
 uses-sdk
-ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:7:5-9:41
+INJECTED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [CircleMenu:library_zhy_CircleMenu:unspecified] E:\Android\Project\CircleMenu\library_zhy_CircleMenu\build\intermediates\bundles\default\AndroidManifest.xml:7:5-9:41
+MERGED from [com.zhy:okhttputils:2.6.2] C:\Users\admin\.android\build-cache\5431fb3df93093fd2b4cec1087c8ed4d86a2f4a7\output\AndroidManifest.xml:7:5-9:41
 	android:targetSdkVersion
-		ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:9:9-38
 		INJECTED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml
 		INJECTED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:8:9-34
 		INJECTED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml
 		INJECTED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml
-application
-ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:11:5-23:19
-MERGED from [CircleMenu:library_zhy_CircleMenu:unspecified] E:\Android\Project\CircleMenu\library_zhy_CircleMenu\build\intermediates\bundles\default\AndroidManifest.xml:11:5-16:19
-	android:label
-		ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:14:9-41
-	android:allowBackup
-		ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:12:9-35
-	android:icon
-		ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:13:9-45
-	android:theme
-		ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:15:9-40
-activity#com.sample_circlemenu.CircleActivity
-ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:16:9-22:20
-	android:name
-		ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:16:19-70
-intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:17:13-21:29
-action#android.intent.action.MAIN
-ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:18:17-69
-	android:name
-		ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:18:25-66
-category#android.intent.category.LAUNCHER
-ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:20:17-77
-	android:name
-		ADDED from E:\Android\Project\CircleMenu\sample_zhy_CircleMenu\src\main\AndroidManifest.xml:20:27-74

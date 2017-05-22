@@ -5,9 +5,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
 import com.zhy.view.CircleMenuLayout;
 import com.zhy.view.CircleMenuLayout.OnMenuItemClickListener;
+import com.zhy.view.Model;
 import com.zhy.view.OnScrollItemListener;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import okhttp3.Call;
 
 /**
  * <pre>
@@ -18,17 +27,14 @@ import com.zhy.view.OnScrollItemListener;
 public class CircleActivity extends Activity {
 
     private CircleMenuLayout mCircleMenuLayout;
-
-    private String[] mItemTexts = new String[]{"安全中心 ", "特色服务", "投资理财",
-            "转账汇款", "我的账户", "信用卡"};
-    private int[] mItemImgs = new int[]{R.drawable.postion1,
-            R.drawable.postion2, R.drawable.postion3,
-            R.drawable.postion4, R.drawable.postion5,
-            R.drawable.postion6, R.drawable.more};
-    private int[] mGoneImgs = new int[]{R.drawable.postion1,
-            R.drawable.postion2, R.drawable.postion3,
-            R.drawable.postion4, R.drawable.postion5,
-            R.drawable.postion6};
+    private int count = 7;
+    private List<String> mShowImgUrl = new ArrayList<String>();
+    private List<String> mGoneImgUrl = new ArrayList<String>();
+    private String[] mItemImg = new String[count];
+    private String[] mGoneImg;
+    String url = "http://www.upstudio.top/ringhelper/sceneController/getSceneInfoApp.do?userMobile=15833941513";
+    private String none = "";
+    private int j = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,13 +43,52 @@ public class CircleActivity extends Activity {
         setContentView(R.layout.activity_main02);
 
         mCircleMenuLayout = (CircleMenuLayout) findViewById(R.id.id_menulayout);
-        mCircleMenuLayout.setMenuItemIconsAndTexts(mItemImgs, mGoneImgs);
 
 
+        OkHttpUtils
+                .get()
+                .url(url)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+
+                        Model model = new Gson().fromJson(response, Model.class);
+                        if ("1".equals(model.getResultCode())) {
+                            List<Model.ResultBean> result = model.getResult();
+
+                            mShowImgUrl.clear();
+                            mGoneImgUrl.clear();
+                            mGoneImg = new String[result.size() - (count - 1)];
+
+                            for (int i = 0; i < result.size(); i++) {
+                                String imgsUrl = Contacts.URL_HEAD + result.get(i).getIcon();
+                                if (i <= (count - 2)) {
+                                    mShowImgUrl.add(imgsUrl);
+                                    mItemImg[i] = imgsUrl;
+                                } else if (i == (count - 1)) {
+                                    mShowImgUrl.add("");
+                                    mItemImg[i] = "";
+                                } else {
+                                    mGoneImgUrl.add(imgsUrl);
+                                    mGoneImg[j++] = imgsUrl;
+                                }
+                            }
+
+                            mCircleMenuLayout.setPlaceHolderImg(R.drawable.more);
+                            mCircleMenuLayout.setMenuItemIconsAndTexts(mItemImg, mGoneImg);
+                        }
+                    }
+                });
         mCircleMenuLayout.setOnScrollItemListener(new OnScrollItemListener() {
             @Override
             public void getItem(int position) {
-                Toast.makeText(CircleActivity.this, "左端    " + position,
+                Toast.makeText(CircleActivity.this, "左端   " + position,
                         Toast.LENGTH_SHORT).show();
             }
 
@@ -82,7 +127,5 @@ public class CircleActivity extends Activity {
 
             }
         });
-
     }
-
 }
