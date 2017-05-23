@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 import com.zhy.view.CircleMenuLayout;
@@ -29,7 +30,6 @@ public class CircleActivity extends Activity {
     private CircleMenuLayout mCircleMenuLayout;
     private int count = 7;
     private List<String> mShowImgUrl = new ArrayList<String>();
-    private List<String> mGoneImgUrl = new ArrayList<String>();
     private String[] mItemImg = new String[count];
     private String[] mGoneImg;
     String url = "http://www.upstudio.top/ringhelper/sceneController/getSceneInfoApp.do?userMobile=15833941513";
@@ -52,36 +52,40 @@ public class CircleActivity extends Activity {
                 .execute(new StringCallback() {
                     @Override
                     public void onError(Call call, Exception e, int id) {
-
                     }
 
                     @Override
                     public void onResponse(String response, int id) {
 
-                        Model model = new Gson().fromJson(response, Model.class);
-                        if ("1".equals(model.getResultCode())) {
-                            List<Model.ResultBean> result = model.getResult();
+                        try {
+                            Model model = new Gson().fromJson(response, Model.class);
+                            if ("1".equals(model.getResultCode())) {
+                                List<Model.ResultBean> result = model.getResult();
 
-                            mShowImgUrl.clear();
-                            mGoneImgUrl.clear();
-                            mGoneImg = new String[result.size() - (count - 1)];
-
-                            for (int i = 0; i < result.size(); i++) {
-                                String imgsUrl = Contacts.URL_HEAD + result.get(i).getIcon();
-                                if (i <= (count - 2)) {
-                                    mShowImgUrl.add(imgsUrl);
-                                    mItemImg[i] = imgsUrl;
-                                } else if (i == (count - 1)) {
-                                    mShowImgUrl.add("");
-                                    mItemImg[i] = "";
-                                } else {
-                                    mGoneImgUrl.add(imgsUrl);
-                                    mGoneImg[j++] = imgsUrl;
+                                mShowImgUrl.clear();
+                                mGoneImg = new String[result.size() - (count - 1)];
+                                if (result.size() <= 6) {
+                                    mGoneImg = new String[result.size()];
                                 }
-                            }
 
-                            mCircleMenuLayout.setPlaceHolderImg(R.drawable.more);
-                            mCircleMenuLayout.setMenuItemIconsAndTexts(mItemImg, mGoneImg);
+                                for (int i = 0; i < result.size(); i++) {
+                                    String imgsUrl = Contacts.URL_HEAD + result.get(i).getIcon();
+                                    if (i <= (count - 2)) {
+                                        mShowImgUrl.add(imgsUrl);
+                                        mItemImg[i] = imgsUrl;
+                                    } else if (i == (count - 1)) {
+                                        mShowImgUrl.add("");
+                                        mItemImg[i] = "";
+                                    }
+                                }
+                                for (int i = result.size() - 1; i >= 0; i--) {
+                                    mGoneImg[j++] = mShowImgUrl.get(i);
+                                }
+                                mCircleMenuLayout.setPlaceHolderImg(R.drawable.ic_launcher);
+                                mCircleMenuLayout.setMenuItemIconsAndTexts(mItemImg, mGoneImg);
+                            }
+                        } catch (JsonSyntaxException e) {
+                            e.printStackTrace();
                         }
                     }
                 });
