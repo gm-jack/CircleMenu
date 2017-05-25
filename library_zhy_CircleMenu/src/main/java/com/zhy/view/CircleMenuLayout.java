@@ -139,36 +139,51 @@ public class CircleMenuLayout extends ViewGroup {
     private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-
+            double end = endAngle;
             if (!isFling) {
                 angelPerSecond = endAngle - mStartAngle;
+                if (Math.abs(angelPerSecond) > mAngleDelay) {
+                    if (endAngle < mStartAngle) {
+                        endAngle = endAngle + 360;
+                        angelPerSecond = endAngle - mStartAngle;
+                    }
+                }
                 angle = angelPerSecond / 50;
                 Log.e("delayAngle", "endAngle  " + endAngle + "   mStartAngle   " + mStartAngle + "   angelPerSecond   " + angelPerSecond + "   angle  " + angle);
             }
 
-            if (angelPerSecond > 0) {
-                //顺时针
-                if (mStartAngle >= endAngle) {
-                    mStartAngle = endAngle;
-                    requestLayout();
-                    isFling = false;
-                    mHandler.removeCallbacksAndMessages(null);
-                    return;
-                }
-
-            } else {
-                //逆时针
-                if (mStartAngle <= endAngle) {
-                    mStartAngle = endAngle;
-                    requestLayout();
-                    isFling = false;
-                    mHandler.removeCallbacksAndMessages(null);
-                    return;
-                }
+//            if (angelPerSecond > 0) {
+//                //顺时针
+//                if (mStartAngle >= endAngle || mStartAngle >= end) {
+//                    mStartAngle = endAngle;
+//                    requestLayout();
+//                    isFling = false;
+//                    mHandler.removeCallbacksAndMessages(null);
+//                    return;
+//                }
+//
+//            } else {
+//                //逆时针
+//                if (mStartAngle <= endAngle) {
+//                    mStartAngle = endAngle;
+//                    requestLayout();
+//                    isFling = false;
+//                    mHandler.removeCallbacksAndMessages(null);
+//                    return;
+//                }
+//            }
+            if ((int) Math.abs(angelPerSecond) == 0) {
+                mStartAngle = endAngle;
+                requestLayout();
+                isFling = false;
+                mHandler.removeCallbacksAndMessages(null);
+                return;
             }
             isFling = true;
             mStartAngle += angle;
+            angelPerSecond -= angle;
             Log.e("delayAngle", "   mStartAngle   " + mStartAngle);
+            Log.e("delayAngle", "   angelPerSecond   " + angelPerSecond);
             mHandler.sendEmptyMessageDelayed(0, 10);
             // 重新布局
             requestLayout();
@@ -181,6 +196,7 @@ public class CircleMenuLayout extends ViewGroup {
     private OnMenuItemClickListener mOnMenuItemClickListener;
     private double angelPerSecond;
     private double endAngle;
+    private int errorImg;
 
 
     public CircleMenuLayout(Context context, AttributeSet attrs) {
@@ -267,8 +283,16 @@ public class CircleMenuLayout extends ViewGroup {
 
     }
 
+    public int getErrorImg() {
+        return errorImg;
+    }
+
     public int getPlaceHolderImg() {
         return placeHolderImg;
+    }
+
+    public void setErrorImg(int errorImg) {
+        this.errorImg = errorImg;
     }
 
     public void setPlaceHolderImg(int placeHolderImg) {
@@ -317,7 +341,7 @@ public class CircleMenuLayout extends ViewGroup {
         int cWidth = (int) (layoutRadius * RADIO_DEFAULT_CHILD_DIMENSION);
         // 根据menu item的个数，计算角度
         mAngleDelay = 360f / (float) (childCount - 1);
-        Log.e("delayAngle", "(childCount - 1)   " + (childCount - 1));
+//        Log.e("delayAngle", "(childCount - 1)   " + (childCount - 1));
         if (isFirst)
             mDoubleList.clear();
 
@@ -333,7 +357,7 @@ public class CircleMenuLayout extends ViewGroup {
             }
 
             mStartAngle %= 360;
-//            Log.e("delayAngle", "mStartAngle" + i + "   " + +mStartAngle);
+
             if (isFirst && i <= mRealPostion)
                 mDoubleList.add(mStartAngle);
 
@@ -355,11 +379,8 @@ public class CircleMenuLayout extends ViewGroup {
                     * cWidth);
 
             child.layout(left, top, left + cWidth, top + cWidth);
-//            if (mStartAngle >= 180 - mAngleDelay && mStartAngle <= 180 - mAngleDelay / 2 && i != childCount - 1)
-//                mStartAngle -= mAngleDelay * 2;
-//            else
+
             mStartAngle += mAngleDelay;
-            Log.e("delayAngle", "mStartAngle    " + i + "   " + +mStartAngle);
         }
         for (int i = 0; i < mDoubleList.size(); i++) {
 //            Log.e("TAG", "" + mDoubleList.get(i));
@@ -370,10 +391,6 @@ public class CircleMenuLayout extends ViewGroup {
                 }
             }
         }
-        //设置显示更多
-//        View child = getChildAt(childCount - 1);
-//        View moreView = findViewById(R.id.id_circle_menu_item_more);
-//        moreView.layout(child.getLeft(), child.getTop(), child.getRight(), child.getBottom());
         // 找到中心的view，如果存在设置onclick事件
         View cView = findViewById(R.id.id_circle_menu_item_center);
         if (cView != null) {
@@ -402,27 +419,28 @@ public class CircleMenuLayout extends ViewGroup {
                 final ImageView iv = (ImageView) parentView
                         .findViewById(R.id.id_circle_menu_item_image);
                 if (iv != null) {
-                    iv.setVisibility(View.INVISIBLE);
-//                    if ("".equals(mGoneIds[0]))
-//                        Glide.with(mContext).load(mGoneIds[0]).placeholder(placeHolderImg).error(placeHolderImg).into(new SimpleTarget<GlideDrawable>() {
-//                            @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-//                            @Override
-//                            public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
-//                                iv.setBackground(resource);
-//                            }
-//                        });
-//                    else
-//                        iv.setBackgroundResource(placeHolderImg);
-//                    iv.setTag(mGoneIds[0]);
-//                    iv.setOnClickListener(new OnClickListener() {
-//                        @Override
-//                        public void onClick(View v) {
-//
-//                            if (mOnMenuItemClickListener != null) {
-//                                mOnMenuItemClickListener.itemClick(v, integerMap.get(iv.getTag()));
-//                            }
-//                        }
-//                    });
+                    if (!"".equals(mGoneIds[0])) {
+                        iv.setVisibility(View.VISIBLE);
+                        iv.setTag(mGoneIds[0]);
+                        Glide.with(mContext).load(mGoneIds[0]).placeholder(placeHolderImg).error(errorImg).into(new SimpleTarget<GlideDrawable>() {
+                            @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+                            @Override
+                            public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
+                                iv.setBackground(resource);
+                            }
+                        });
+                    } else {
+                        iv.setVisibility(View.INVISIBLE);
+                    }
+                    iv.setOnClickListener(new OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            if (mOnMenuItemClickListener != null) {
+                                mOnMenuItemClickListener.itemClick(v, integerMap.get(iv.getTag()));
+                            }
+                        }
+                    });
                 }
                 mImageList.add(parentView);
                 // 添加view到容器中
@@ -453,14 +471,15 @@ public class CircleMenuLayout extends ViewGroup {
                 mTmpAngle = 0;
                 // 如果当前已经在快速滚动
                 if (isFling) {
-                    // 移除快速滚动的回调
-                    mHandler.removeCallbacksAndMessages(null);
-                    isFling = false;
                     return true;
                 }
 
                 break;
             case MotionEvent.ACTION_MOVE:
+                // 如果当前已经在快速滚动
+                if (isFling) {
+                    return true;
+                }
                 //防止过多layout
                 if (Math.abs(x - mLastX) < 3 || Math.abs(y - mLastY) < 3)
                     return true;
@@ -493,6 +512,8 @@ public class CircleMenuLayout extends ViewGroup {
 //                requestLayout();
                 break;
             case MotionEvent.ACTION_UP:
+                if (allItem.length < 0)
+                    return true;
                 if (!isClockwise) {
                     return super.dispatchTouchEvent(event);
                 }
@@ -581,16 +602,20 @@ public class CircleMenuLayout extends ViewGroup {
             if (i == 0) {
                 iv.setVisibility(View.INVISIBLE);
             } else {
-                iv.setVisibility(View.VISIBLE);
-                Glide.with(mContext).load(visiabllAllItem[j++]).placeholder(placeHolderImg).error(placeHolderImg).into(new SimpleTarget<GlideDrawable>() {
-                    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-                    @Override
-                    public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
-                        Log.e("TAG", "" + (resource == null));
-                        iv.setBackground(resource);
-                    }
-                });
                 iv.setTag(visiabllAllItem[j]);
+                if (!"".equals(visiabllAllItem[j])) {
+                    iv.setVisibility(View.VISIBLE);
+                    Glide.with(mContext).load(visiabllAllItem[j++]).placeholder(placeHolderImg).error(errorImg).into(new SimpleTarget<GlideDrawable>() {
+                        @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+                        @Override
+                        public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
+                            Log.e("TAG", "" + (resource == null));
+                            iv.setBackground(resource);
+                        }
+                    });
+                } else {
+                    iv.setVisibility(View.INVISIBLE);
+                }
                 iv.setOnClickListener(null);
                 iv.setOnClickListener(new OnClickListener() {
                     @Override
@@ -640,16 +665,20 @@ public class CircleMenuLayout extends ViewGroup {
             if (i == mImageList.size() - 1) {
                 iv.setVisibility(View.INVISIBLE);
             } else {
-                iv.setVisibility(View.VISIBLE);
-                Glide.with(mContext).load(visiabllAllItem[j++]).placeholder(placeHolderImg).error(placeHolderImg).into(new SimpleTarget<GlideDrawable>() {
-                    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-                    @Override
-                    public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
-                        Log.e("TAG", "" + (resource == null));
-                        iv.setBackground(resource);
-                    }
-                });
-                iv.setTag(visiabllAllItem[j]);
+                if (!"".equals(visiabllAllItem[j])) {
+                    iv.setVisibility(View.VISIBLE);
+                    iv.setTag(visiabllAllItem[j]);
+                    Glide.with(mContext).load(visiabllAllItem[j++]).placeholder(placeHolderImg).error(errorImg).into(new SimpleTarget<GlideDrawable>() {
+                        @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+                        @Override
+                        public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
+                            Log.e("TAG", "" + (resource == null));
+                            iv.setBackground(resource);
+                        }
+                    });
+                } else {
+                    iv.setVisibility(View.INVISIBLE);
+                }
                 iv.setOnClickListener(null);
                 iv.setOnClickListener(new OnClickListener() {
                     @Override
@@ -785,7 +814,6 @@ public class CircleMenuLayout extends ViewGroup {
                 mImageList.add(parentView);
             if (iv != null) {
                 iv.setVisibility(View.VISIBLE);
-
                 iv.setTag(mItemImgs[i]);
                 if (i == mMenuItemCount - 1) {
                     iv.setBackgroundResource(R.drawable.more);
@@ -799,7 +827,7 @@ public class CircleMenuLayout extends ViewGroup {
                         }
                     });
                 } else {
-                    Glide.with(mContext).load(mItemImgs[i]).placeholder(placeHolderImg).into(new SimpleTarget<GlideDrawable>() {
+                    Glide.with(mContext).load(mItemImgs[i]).placeholder(placeHolderImg).error(errorImg).into(new SimpleTarget<GlideDrawable>() {
                         @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
                         @Override
                         public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {

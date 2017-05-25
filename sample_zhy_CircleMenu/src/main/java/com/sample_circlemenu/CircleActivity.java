@@ -2,6 +2,7 @@ package com.sample_circlemenu;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -56,17 +57,13 @@ public class CircleActivity extends Activity {
 
                     @Override
                     public void onResponse(String response, int id) {
-
+                        Log.e("http", "response   " + response.toString());
                         try {
                             Model model = new Gson().fromJson(response, Model.class);
                             if ("1".equals(model.getResultCode())) {
                                 List<Model.ResultBean> result = model.getResult();
 
                                 mShowImgUrl.clear();
-                                mGoneImg = new String[result.size() - (count - 1)];
-                                if (result.size() <= 6) {
-                                    mGoneImg = new String[result.size()];
-                                }
 
                                 for (int i = 0; i < result.size(); i++) {
                                     String imgsUrl = Contacts.URL_HEAD + result.get(i).getIcon();
@@ -78,9 +75,15 @@ public class CircleActivity extends Activity {
                                         mItemImg[i] = "";
                                     }
                                 }
-                                for (int i = result.size() - 1; i >= 0; i--) {
-                                    mGoneImg[j++] = mShowImgUrl.get(i);
+                                if (result.size() <= 6 && result.size() > 0) {
+                                    mGoneImg = new String[result.size()];
+                                    for (int i = result.size() - 1; i >= 0; i--) {
+                                        mGoneImg[j++] = mShowImgUrl.get(i);
+                                    }
+                                } else {
+                                    mGoneImg = new String[]{"", "", "", "", ""};
                                 }
+
                                 mCircleMenuLayout.setPlaceHolderImg(R.drawable.ic_launcher);
                                 mCircleMenuLayout.setMenuItemIconsAndTexts(mItemImg, mGoneImg);
                             }

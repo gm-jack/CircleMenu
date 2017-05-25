@@ -1,7 +1,4 @@
-#Tue May 23 22:00:05 CST 2017
-base.0=E\:\\Android\\Project\\CircleMenu\\sample_zhy_CircleMenu\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_3368b98e529f1ec0a1b47538b88a965457e05f41
-renamed.1=classes2.dex
+#Thu May 25 15:06:36 CST 2017
+base.0=C\:\\Users\\yxy\\Desktop\\Project\\CircleMenu\\sample_zhy_CircleMenu\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
 renamed.0=classes.dex
-file.1=E\:\\Android\\Project\\CircleMenu\\sample_zhy_CircleMenu\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_a5a5655aaed5fff5c06290303d2a79dc0ef8fd42\\classes.dex
-base.1=E\:\\Android\\Project\\CircleMenu\\sample_zhy_CircleMenu\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_a5a5655aaed5fff5c06290303d2a79dc0ef8fd42
-file.0=E\:\\Android\\Project\\CircleMenu\\sample_zhy_CircleMenu\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_3368b98e529f1ec0a1b47538b88a965457e05f41\\classes.dex
+file.0=C\:\\Users\\yxy\\Desktop\\Project\\CircleMenu\\sample_zhy_CircleMenu\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main\\classes.dex

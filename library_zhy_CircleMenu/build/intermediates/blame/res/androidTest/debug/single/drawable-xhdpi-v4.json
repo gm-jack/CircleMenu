@@ -1,10 +1,18 @@
 [
     {
+        "merged": "C:\\Users\\yxy\\Desktop\\Project\\CircleMenu\\library_zhy_CircleMenu\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\ic_launcher.png",
+        "source": "C:\\Users\\yxy\\Desktop\\Project\\CircleMenu\\library_zhy_CircleMenu\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\ic_launcher.png"
+    },
+    {
         "merged": "E:\\Android\\Project\\CircleMenu\\library_zhy_CircleMenu\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\more.png",
         "source": "E:\\Android\\Project\\CircleMenu\\library_zhy_CircleMenu\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\more.png"
     },
     {
         "merged": "E:\\Android\\Project\\CircleMenu\\library_zhy_CircleMenu\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\ic_launcher.png",
         "source": "E:\\Android\\Project\\CircleMenu\\library_zhy_CircleMenu\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\yxy\\Desktop\\Project\\CircleMenu\\library_zhy_CircleMenu\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\more.png",
+        "source": "C:\\Users\\yxy\\Desktop\\Project\\CircleMenu\\library_zhy_CircleMenu\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\more.png"
     }
 ]

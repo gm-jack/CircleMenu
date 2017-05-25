@@ -1,5 +1,9 @@
 [
     {
+        "merged": "C:\\Users\\yxy\\Desktop\\Project\\CircleMenu\\sample_zhy_CircleMenu\\build\\intermediates\\res\\merged\\debug\\menu\\main.xml",
+        "source": "C:\\Users\\yxy\\Desktop\\Project\\CircleMenu\\sample_zhy_CircleMenu\\src\\main\\res\\menu\\main.xml"
+    },
+    {
         "merged": "E:\\Android\\Project\\CircleMenu\\sample_zhy_CircleMenu\\build\\intermediates\\res\\merged\\debug\\menu\\main.xml",
         "source": "E:\\Android\\Project\\CircleMenu\\sample_zhy_CircleMenu\\src\\main\\res\\menu\\main.xml"
     }
